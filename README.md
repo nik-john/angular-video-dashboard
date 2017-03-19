@@ -1,4 +1,4 @@
-## AngularJS/Browserify/Bootstrap/ExpressJS/MongoDB/Cloudinary Video Dashboard
+## AngularJS | Browserify | Bootstrap | ExpressJS | MongoDB | Cloudinary Full Stack Video Dashboard
 
 ### Getting up and running
 
