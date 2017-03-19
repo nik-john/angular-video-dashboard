@@ -1,0 +1,28 @@
+.header-nav.navbar-inverse {
+  background-color: #EA4961;
+
+  .container {
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    li {
+      a {
+        color: rgb(255, 249, 196);
+      }
+    }
+    .navbar-toggle {
+      margin: 25px 10px;
+    }
+    .navbar-brand {
+      color: white;
+      color: white;
+      border: 1px solid rgba(256, 256, 256, 0.5);
+      border-radius: 10px 10px;
+      padding: 15px;
+      margin: 15px 5px;
+    }
+  }
+}

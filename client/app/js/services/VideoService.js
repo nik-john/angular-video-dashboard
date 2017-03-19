@@ -1,8 +1,9 @@
 function VideoService($http, $localStorage, AppSettings, $q) {
   'ngInject';
 
-  const service = {};
+  const service = {}, pagination = {};
   let $storage = $localStorage;
+
   // Video service to fetch one video
   service.getOne = function(id) {
     if (!$storage.token) {
@@ -54,6 +55,15 @@ function VideoService($http, $localStorage, AppSettings, $q) {
         rating: correctedRating
       }
     });
+  }
+
+  service.savePage = function(skip, limit) {
+    pagination.skip = skip;
+    pagination.limit = limit;
+  }
+
+  service.getPage = function() {
+    return pagination;
   }
   return service;
 }

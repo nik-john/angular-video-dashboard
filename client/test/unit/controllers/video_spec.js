@@ -40,7 +40,30 @@ describe('Unit: VideoCtrl', function() {
           });
           return deferred.promise;
         },
-
+        get: function() {
+          let deferred = $q.defer();
+          deferred.resolve({
+            data: {
+              status: 'success',
+              data: [{
+                _id: 'abc',
+                name: 'efg',
+                description: 'hij',
+                url: 'lmn.mp4',
+                __v: 1,
+                ratings: [1, 2, 3, 4]
+              }, {
+                _id: 'opq',
+                name: 'rst',
+                description: 'uvw',
+                url: 'xyz.mp4',
+                __v: 1,
+                ratings: [5, 6, 7, 8]
+              }]
+            }
+          });
+          return deferred.promise;
+        }
       };
     });
   });
@@ -80,7 +103,7 @@ describe('Unit: VideoCtrl', function() {
     expect(ctrl.selfRating).toBe(0);
   });
 
-  it('onRating should return 0 if rating is 0 or invalid', function() {
+  it('onRating should return unchanged if rating is 0 or invalid', function() {
     let ctrl = $controller('VideoCtrl', {
       $scope: scope,
       $stateParams: {
@@ -90,13 +113,13 @@ describe('Unit: VideoCtrl', function() {
     });
     ctrl.onRating(0);
     scope.$digest();
-    expect(ctrl.selfRating).toBe(0);
+    expect(ctrl.selfRating).toBe(2.5);
     ctrl.onRating('asd');
     scope.$digest();
-    expect(ctrl.selfRating).toBe(0);
+    expect(ctrl.selfRating).toBe(2.5);
   });
 
-  it('onRating should return rating if API request is successful', function() {
+  it('onRating should return avg rating if API request is successful', function() {
     let ctrl = $controller('VideoCtrl', {
       $scope: scope,
       $stateParams: {

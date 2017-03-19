@@ -67,27 +67,36 @@ describe('Unit: LandingCtrl', function() {
       $scope: scope
     }, {
       players: [{
-        state: 'play',
+        currentState: 'play',
         pause: function() {
-          return this.state = 'pause';
+          return this.currentState = 'pause';
+        },
+        stop: function() {
+          return this.currentState = 'stop';
         }
       }, {
-        state: 'pause',
+        currentState: 'stop',
         pause: function() {
-          return this.state = 'pause';
+          return this.currentState = 'pause';
+        },
+        stop: function() {
+          return this.currentState = 'stop';
         }
       }, {
-        state: 'play',
+        currentState: 'play',
         pause: function() {
-          return this.state = 'pause';
+          return this.currentState = 'pause';
+        },
+        stop: function() {
+          return this.currentState = 'stop';
         }
       }]
     });
+
     ctrl.onUpdateState('play', 2);
-    // This should set the state of all players but players[2] to pause
-    expect(ctrl.players[0].state).toBe('pause');
-    expect(ctrl.players[1].state).toBe('pause');
-    expect(ctrl.players[2].state).toBe('play');
+    expect(ctrl.players[0].currentState).toBe('pause');
+    expect(ctrl.players[1].currentState).toBe('stop');
+    expect(ctrl.players[2].currentState).toBe('play');
   });
 
 });

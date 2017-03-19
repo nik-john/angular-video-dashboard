@@ -36,7 +36,7 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $compil
 
   $stateProvider
     .state('Landing', {
-      url: '/?skip&limit',
+      url: '/',
       controller: 'LandingCtrl as lan',
       templateUrl: 'landing.html',
       title: 'Home',

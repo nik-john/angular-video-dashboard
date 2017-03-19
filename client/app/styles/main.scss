@@ -6,10 +6,14 @@
 @import 'rating';
 @import 'login';
 @import 'loader';
+@import 'nav';
 
 body {
-    padding-top: 70px;
+    padding-top: 115px;
     background-color: white;
+    @media (max-width: 768px) {
+      padding-top: 80px;
+    }
 }
 
 .portfolio-item {

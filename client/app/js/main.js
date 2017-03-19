@@ -39,7 +39,7 @@ const requires = [
 // mount on window for testing
 window.app = angular.module('app', requires);
 
-angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 250);
+angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500);
 
 angular.module('app').constant('AppSettings', constants);
 

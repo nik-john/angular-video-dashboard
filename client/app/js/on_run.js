@@ -1,4 +1,4 @@
-function OnRun($rootScope, AppSettings, $timeout) {
+function OnRun($rootScope, AppSettings, $timeout, UserService) {
   'ngInject';
 
   // change page title based on state
@@ -11,21 +11,19 @@ function OnRun($rootScope, AppSettings, $timeout) {
     }
 
     $rootScope.pageTitle += AppSettings.appTitle;
+    $timeout(() => {
+      $rootScope.loading = false;
+    }, 500);
+    $rootScope.isLoggedIn = UserService.isLoggedIn();
   });
   // change page title based on state
   $rootScope.$on('$stateChangeStart', (event, toState) => {
       $rootScope.loading = true;
-
   });
-  $rootScope.$on('$stateChangeSuccess', (event, toState) => {
+  $rootScope.$on('$stateChangeError', (event, toState) => {
     $timeout(() => {
       $rootScope.loading = false;
-    }, 350);
-  });
-  $rootScope.$on('$stateChangeStart', (event, toState) => {
-    $timeout(() => {
-      $rootScope.loading = false;
-    }, 350);
+    }, 500);
   });
 
 }

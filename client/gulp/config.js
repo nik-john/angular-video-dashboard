@@ -12,9 +12,9 @@ export default {
     dest: 'build/css',
     prodSourcemap: false,
     sassIncludePaths: [
-      './node_modules/bootstrap-sass/assets/stylesheets',
-      './node_modules/videogular-themes-default',
-      './node_modules/angular-jk-rating-stars/dist'
+      '../node_modules/bootstrap-sass/assets/stylesheets',
+      '../node_modules/videogular-themes-default',
+      '../node_modules/angular-jk-rating-stars/dist'
     ]
   },
 
@@ -31,7 +31,7 @@ export default {
   },
 
   fonts: {
-    src: ['app/fonts/**/*', './node_modules/bootstrap-sass/assets/fonts/**/*'],
+    src: ['app/fonts/**/*', '../node_modules/bootstrap-sass/assets/fonts/**/*'],
     dest: 'build/fonts'
   },
 

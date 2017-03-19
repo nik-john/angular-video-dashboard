@@ -1,4 +1,8 @@
 .page-container.landing {
+  .title-container {
+    padding-bottom: 1em;
+  }
+
   .content-container {
     .loader-container {
       position: absolute;
@@ -60,58 +64,60 @@
     .video-list-container {
       max-height: 800px;
       overflow-y: scroll;
+    }
+  }
+}
 
-      .video-thumbnail-container {
-        margin-bottom: 2em;
+.video-thumbnail-container {
+  margin-bottom: 70px;
+  height: 100%;
 
-        .thumbnail-name {
-          height: 20px;
-          text-overflow: ellipsis;
-          overflow: hidden;
-        }
+  .thumbnail-name {
+    height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 
-        .thumbnail-rating {
-          height: 20px;
-          .jk-rating-stars-container {
-            a {
-              text-decoration: none;
-            }
+  .thumbnail-rating {
+    height: 20px;
 
-            .star-button {
-              text-shadow: none;
-            }
+    .jk-rating-stars-container {
+      a {
+        text-decoration: none;
+      }
 
-            .button .material-icons {
-              font-size: 20px; 
-            }
-          }
-        }
+      .star-button {
+        text-shadow: none;
+      }
 
-        .video-thumbnail {
-          // display: flex;
-          // flex-direction: column;
-          // align-items: center;
-          // justify-content: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-          border: 1px solid rgba(221, 221, 221, 0.1);
-          height: 200px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+      .button .material-icons {
+        font-size: 20px;
+      }
+    }
+  }
 
-          .preview {
-            height: 200px;
-            width: 200px;
-            overflow: hidden;
+  .video-thumbnail {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(221, 221, 221, 0.1);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-            img {
-              width: 100%;
-            }
-          }
-        }
+    .preview {
+      height: 200px;
+      width: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
       }
     }
   }

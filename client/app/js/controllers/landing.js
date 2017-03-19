@@ -1,14 +1,9 @@
-function LandingCtrl(VideoService, $sce, $state, AppSettings, $timeout) {
+function LandingCtrl(VideoService, $sce, $state, AppSettings, $timeout, $localStorage) {
   'ngInject';
   // ViewModel
   const vm = this;
-  // Array of Videogular players
+  vm.$storage = $localStorage;
   vm.players = [], vm.videoThumbnails = [], vm.skip = 0, vm.limit = 10;
-
-  if($state.params) {
-    vm.skip = $state.params.skip || 0;
-    vm.limit = $state.params.limit || 10;
-  }
 
   // Bind Videogular player APIs to vm.players array for future manipulation
   vm.onPlayerReady = function(API, index) {
@@ -19,15 +14,13 @@ function LandingCtrl(VideoService, $sce, $state, AppSettings, $timeout) {
   vm.onUpdateState = function(state, index) {
     if (state === 'play') {
       vm.players.filter((player, i) => {
-        if (i !== index) {
-          // TODO: Pause if playing, else stop
+        if (i !== index && player.currentState === 'play') {
           player.pause();
         }
       });
     }
   };
   vm.getVideos = function(limit) {
-    console.log("Infinite scroll enabled");
     vm.loading = true;
     VideoService.get(vm.skip, limit || vm.limit)
       .then((data) => {
@@ -37,7 +30,7 @@ function LandingCtrl(VideoService, $sce, $state, AppSettings, $timeout) {
             })
           }),
           mediaBaseUrl = AppSettings.CLOUDINARY_HOST,
-          mediaEnhancementsUrl = 'h_100,w_100,r_max,q_auto,bo_1px_solid_white/',
+          mediaEnhancementsUrl = 'h_150,q_auto/',
           mediaTargetUrl = AppSettings.CLOUDINARY_CLOUD;
         let vids = videos.map((video) => {
           return {
@@ -45,6 +38,8 @@ function LandingCtrl(VideoService, $sce, $state, AppSettings, $timeout) {
             imgUrl: mediaBaseUrl + mediaEnhancementsUrl + mediaTargetUrl + video.url + '.png',
             id: video._id,
             name: video.name,
+            // Find average rating
+            ratings: Math.round(video.ratings.reduce((a, b) => a + b, 0)/video.ratings.length * 10) / 10,
             sources: [{
               src: $sce.trustAsResourceUrl(mediaBaseUrl + mediaTargetUrl + video.url + '.mp4'),
               type: 'video/mp4'
@@ -58,9 +53,35 @@ function LandingCtrl(VideoService, $sce, $state, AppSettings, $timeout) {
         vm.skip = vm.videoThumbnails.length;
         $timeout(() => {
           vm.loading = false;
-        }, 500);
+        }, 350);
       }, function(error) {
         console.log('Error occurred' + error);
+      });
+  };
+
+  // Rating function
+  vm.onRating = function(rating, id) {
+    console.log("Rating entered");
+    if (isNaN(rating) || rating < 1) {
+      return;
+    }
+    // Persist rating to backend
+    // Backend validation has been added
+    // to prevent zero ratings
+    VideoService.rate(rating, id)
+      .then(function(data) {
+        let ratingsArray  = data.data.data.ratings,
+          ratings = Math.round(ratingsArray.reduce((a, b) => a + b, 0)/ratingsArray.length * 10) / 10
+        vm.videoThumbnails.forEach((video) => {
+          if(video.id === id) {
+            console.log("Ratings before "+video.ratings);
+            video.ratings = ratings;
+            console.log("Ratings after "+video.ratings);
+          }
+        });
+      }, function(error) {
+        // TODO: Handle error gracefully
+        console.log('Rating Error occurred' + error.data);
       });
   }
 }
