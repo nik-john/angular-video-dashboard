@@ -4,10 +4,14 @@
 
 #### Prerequisites
 
-1. NodeJS v6
-    _Please make sure you are running Node v6 or upwards, or the application **will break**_
+1. **NodeJS v6**
+    **_Please make sure you are running Node v6 or upwards, or the application will break_**
+    Node can be installed and managed using [NVM](https://github.com/creationix/nvm) or other tools
 2. MongoDB
-
+    MongoDB needs to be running. Installation instructions [here](https://docs.mongodb.com/getting-started/shell/installation/)
+3. Active Internet Connection
+    This application depends on Cloudinary, and needs an active internet connection to fetch data from the cloud. This feature can of course be swapped out, but for demo purposes, this is a prerequisite.
+    
 #### Installation
 1. Unzip this folder or clone `https://github.com/nik-john/angular-video-dashboard/``
 2. `cd` into the folder and run `npm install` from the root directory
@@ -93,6 +97,12 @@ Browserify is a Javascript file and module loader, allowing you to `require('mod
 ### Gulp
 
 Gulp is a "streaming build system", providing a very fast and efficient method for running your build tasks.
+
+---
+
+### Cloudinary
+
+Cloudinary is a Media Storage and Manipulation service. In this project, cloudinary has been used to generate thumbnails on the fly, optimize video  quality (and therefore speed). No setup is required, as the media is residing on my personal cloud.
 
 ##### Web Server
 
