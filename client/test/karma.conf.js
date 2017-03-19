@@ -45,7 +45,7 @@ const karmaBaseConfig = {
     'app/js/main.js',
 
     // 3rd-party resources
-    'node_modules/angular-mocks/angular-mocks.js',
+    '../node_modules/angular-mocks/angular-mocks.js',
 
     // test files
     'test/unit/**/*.js'
