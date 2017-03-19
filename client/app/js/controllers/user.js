@@ -1,4 +1,4 @@
-function UserCtrl($state, $localStorage, UserService) {
+function UserCtrl($state, $localStorage, UserService, Flash) {
   'ngInject';
 
   const vm = this;
@@ -19,9 +19,17 @@ function UserCtrl($state, $localStorage, UserService) {
         if (res.data && res.data.status && res.data.status.toString() === 'success') {
           vm.$storage.token = res.data.sessionId;
           $state.go('Landing');
+          Flash.clear();
+          let message = '<strong>Welcome!</strong> You are now logged in',
+            id = Flash.create('success', message);
+        }
+        else {
+          Flash.clear();
+          let message = '<strong>Wrong credentials!</strong> Please try again',
+            id = Flash.create('alert', message);
         }
       }, function() {
-        // TODO: Handle error gracefully
+        l
         vm.error = 'Failed to signin';
       });
     }

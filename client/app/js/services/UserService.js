@@ -1,6 +1,6 @@
 import md5 from 'md5';
 
-function UserService($http, $localStorage, AppSettings) {
+function UserService($http, $localStorage, AppSettings, Flash) {
   'ngInject';
 
   const service = {}
@@ -32,6 +32,9 @@ function UserService($http, $localStorage, AppSettings) {
   // This is consumed by the 'Logout' state
   service.logout = function() {
     delete $storage.token;
+    Flash.clear();
+    let message = '<strong>Thanks!</strong> You are now logged out',
+      id = Flash.create('success', message);
   };
   return service;
 }

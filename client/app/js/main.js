@@ -18,6 +18,7 @@ import './services';
 import './directives';
 import 'angular-jk-rating-stars';
 import 'ng-infinite-scroll';
+import 'angular-flash-alert';
 // create and bootstrap application
 const requires = [
   'ui.router',
@@ -33,7 +34,8 @@ const requires = [
   'app.controllers',
   'app.services',
   'app.directives',
-  'infinite-scroll'
+  'infinite-scroll',
+  'ngFlash'
 ];
 
 // mount on window for testing

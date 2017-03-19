@@ -25,3 +25,13 @@ footer {
     bottom: 0;
     margin: 10px 0;
 }
+
+flash-message, [flash-message] {
+  position: absolute;
+    top: 150px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}

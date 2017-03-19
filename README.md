@@ -18,7 +18,8 @@
 3. Run `npm run server` - this starts up the backend server.
 4. Open a new tab and run `npm run frontend` - this starts up the frontend server.
 5. Your browser will automatically be opened and directed to the browser-sync proxy address
-6. To prepare assets for production, run the `npm run build` script (Note: the production task does not fire up the express server, and won't provide you with browser-sync's live reloading. Simply use `npm run dev` during development. More information below)
+6. In the `/login` page, use the username/password : `ali`/`password` to login
+7. To prepare assets for production, run the `npm run build` script (Note: the production task does not fire up the express server, and won't provide you with browser-sync's live reloading. Simply use `npm run dev` during development. More information below)
 
 
 ### Folder structure
@@ -113,3 +114,34 @@ Cloudinary is a Media Storage and Manipulation service. In this project, cloudin
 ##### Web Server
 
 Gulp is used here to provide a very basic node/Express web server for viewing and testing your application as you build. It serves static files from the `build/` directory, leaving routing up to AngularJS. All Gulp tasks are configured to automatically reload the server upon file changes. The application is served to `localhost:3002` once you run the `npm run dev` script. To take advantage of the fast live reload injection provided by browser-sync, you must load the site at the proxy address (within this boilerplate will by default be `localhost:3000`). To change the settings related to live-reload or browser-sync, you can access the UI at `localhost:3001`.
+
+
+
+## Known issues/bugs
+
+1. Infinite scroll goes into loop at the bottom of the container after all 100 videos have been loaded
+2. Directives
+3. Error handling on login form is incomplete
+
+
+## Tasks status
+
+[x] Develop a single page application by using one of the allowed MVV* frameworks.
+
+[x] Design the UI, which should be motivated by the provided visuals.
+
+[x] Implement user authentication. The content of this application should not be visible to public.
+
+[x] User should be able to see video listings on index page. Only first 10 videos should be loaded initially.
+
+[x] Lazy loading should be implemented i.e. More videos should appear as the user scrolls down the listing.
+
+[x] Users should not be able to play more than 1 video simultaneously. Playing a video should pause all other videos.
+
+[x] Users should be able to rate videos, an overall rating for each video should also be displayed.
+
+[x] Users should be able to open the video details page by clicking on video title.
+
+[x] REST API should be consumed.
+
+[x] Unit tests with at least 50% code coverage should be provided.
