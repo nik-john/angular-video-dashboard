@@ -42,10 +42,10 @@
 
     <div class="col-md-4 ratings container">
       <div class="row">
-        <p class="col-md-12 col-sm-8 col-xs-12 description" ng-bind="vid.video.description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+        <p class="col-md-12 col-sm-8 col-xs-12 description" ng-bind="vid.video.description"></p>
         <div class="col-md-12 col-sm-4 col-xs-12">
           <h3>Ratings <span ng-bind="'(' + vid.video.ratings.length + ')'"></span></h3>
-          <jk-rating-stars ng-repeat="rating in vid.video.ratings | limitTo:5 track by $index"
+          <jk-rating-stars ng-repeat="rating in vid.video.ratings | limitTo:-5 track by $index"
             max-rating="5" rating="rating" read-only="true">
           </jk-rating-stars>
           <a ng-show="vid.video.ratings.length > 5">

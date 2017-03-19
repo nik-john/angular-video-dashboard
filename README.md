@@ -11,14 +11,20 @@
     MongoDB needs to be running. Installation instructions [here](https://docs.mongodb.com/getting-started/shell/installation/)
 3. Active Internet Connection
     This application depends on Cloudinary, and needs an active internet connection to fetch data from the cloud. This feature can of course be swapped out, but for demo purposes, this is a prerequisite.
-    
+
 #### Installation
 1. Unzip this folder or clone `https://github.com/nik-john/angular-video-dashboard/``
 2. `cd` into the folder and run `npm install` from the root directory
-2. Run `npm run dev` - this starts up the full-stack application.
-    _There is no need to start ExpressJS and Gulp separately_
-3. Your browser will automatically be opened and directed to the browser-sync proxy address
-4. To prepare assets for production, run the `npm run build` script (Note: the production task does not fire up the express server, and won't provide you with browser-sync's live reloading. Simply use `npm run dev` during development. More information below)
+3. Run `npm run server` - this starts up the backend server.
+4. Open a new tab and run `npm run frontend` - this starts up the frontend server.
+5. Your browser will automatically be opened and directed to the browser-sync proxy address
+6. To prepare assets for production, run the `npm run build` script (Note: the production task does not fire up the express server, and won't provide you with browser-sync's live reloading. Simply use `npm run dev` during development. More information below)
+
+
+### Folder structure
+
+1. `/` contains ExpressJS server code
+2. `/client` contains frontend code
 
 ### Tests
 
