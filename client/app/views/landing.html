@@ -1,0 +1,55 @@
+<div class="container page-container landing">
+  <div class="row title-container">
+    <div class="col-lg-12">
+      <h3 class="page-header">
+        Recommended Videos
+      </h3>
+      <span>
+        <em> Showing 0 - {{lan.videoThumbnails.length}}</em>
+      </span>
+    </div>
+  </div>
+  <div class="row content-container">
+    <div class="loader-container" ng-show="lan.loading && !loading">
+      <div class="loader">Loading...</div>
+    </div>
+    <div class="col-xs-12 video-list-container">
+      <div class="row" infinite-scroll='lan.getVideos()' infinite-scroll-container="'.video-list-container'">
+        <div ng-repeat="video in lan.videoThumbnails track by $index" class="video-thumbnail-container col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-4 col-lg-3">
+          <div class="video-thumbnail">
+            <videogular vg-theme="video.theme.url" vg-player-ready="lan.onPlayerReady($API, $index)" vg-update-state="lan.onUpdateState($state, $index)">
+              <vg-media vg-src="video.sources" vg-native-controls="false" vg-preload="'none'">
+              </vg-media>
+              <vg-controls>
+                <vg-play-pause-button></vg-play-pause-button>
+                <vg-time-display ng-bind="currentTime | date:'mm:ss':'+0000'"></vg-time-display>
+                <vg-scrub-bar>
+                  <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                </vg-scrub-bar>
+                <vg-time-display ng-bind="timeLeft | date:'mm:ss':'+0000'"></vg-time-display>
+                <vg-volume>
+                  <vg-mute-button></vg-mute-button>
+                  <vg-volume-bar></vg-volume-bar>
+                </vg-volume>
+                <vg-fullscreen-button></vg-fullscreen-button>
+              </vg-controls>
+              <vg-overlay-play></vg-overlay-play>
+              <vg-poster vg-url="video.imgUrl"></vg-poster>
+            </videogular>
+          </div>
+          <h4 class="thumbnail-name" ui-sref="Video({id: video.id})" ng-bind="video.name.substring(3)"></h4>
+          <div class="rating thumbnail-rating">
+            <jk-rating-stars
+              rating="::video.rating[0]"
+              max-rating="5"
+              on-rating="vid.onRating(rating, video.id)">
+            </jk-rating-stars>
+          </div>
+        </div>
+      </div>
+      <div class="video-thumbnail" ng-click="lan.getVideos(5)">
+        View more
+      </div>
+    </div>
+    <hr>
+  </div>

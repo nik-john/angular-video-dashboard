@@ -1,0 +1,19 @@
+.videogular-container {
+  [videogular],
+  videogular {
+    background-color: white;
+  }
+  .rating {
+    padding: 1em 1em 1em 0;
+
+    .jk-rating-stars-container {
+      a {
+        text-decoration: none;
+      }
+
+      .star-button {
+        text-shadow: none;
+      }
+    }
+  }
+}

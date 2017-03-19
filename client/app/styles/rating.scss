@@ -1,0 +1,45 @@
+@import 'jk-rating-stars';
+
+.ratings.container {
+  .jk-rating-stars-container {
+    a {
+      text-decoration: none;
+    }
+
+    .star-button {
+      text-shadow: none;
+    }
+
+    .button .material-icons {
+      font-size: 2em;
+    }
+
+    .star-button.star-on .material-icons {
+      color: #003399;
+    }
+
+    .star-button.star-off .material-icons {
+      color: #99ccff;
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+  .description {
+    text-align: justify;
+  }
+  @media only screen and (min-width : 1200px) {
+    .description {
+      max-height: 240px;
+      overflow: scroll;
+    }
+  }
+  /* Medium Devices, Desktops */
+  @media only screen and (min-width : 992px) {
+    .description {
+      max-height: 190px;
+      overflow: scroll;
+    }
+  }
+}

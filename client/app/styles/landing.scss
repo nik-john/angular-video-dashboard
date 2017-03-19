@@ -1,0 +1,118 @@
+.page-container.landing {
+  .content-container {
+    .loader-container {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      z-index: 9;
+
+      .loader,
+      .loader:after {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+      }
+
+      .loader {
+        margin: 60px auto;
+        font-size: 10px;
+        position: relative;
+        text-indent: -9999em;
+        border-top: 1.1em solid rgba(77, 144, 254, 0.5);
+        border-right: 1.1em solid rgba(77, 144, 254, 0.5);
+        border-bottom: 1.1em solid rgba(77, 144, 254, 0.5);
+        border-left: 1.1em solid #ffffff;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-animation: load8 1.1s infinite linear;
+        animation: load8 1.1s infinite linear;
+      }
+      @-webkit-keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    }
+    position: relative;
+
+    .video-list-container {
+      max-height: 800px;
+      overflow-y: scroll;
+
+      .video-thumbnail-container {
+        margin-bottom: 2em;
+
+        .thumbnail-name {
+          height: 20px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .thumbnail-rating {
+          height: 20px;
+          .jk-rating-stars-container {
+            a {
+              text-decoration: none;
+            }
+
+            .star-button {
+              text-shadow: none;
+            }
+
+            .button .material-icons {
+              font-size: 20px; 
+            }
+          }
+        }
+
+        .video-thumbnail {
+          // display: flex;
+          // flex-direction: column;
+          // align-items: center;
+          // justify-content: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          border: 1px solid rgba(221, 221, 221, 0.1);
+          height: 200px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          .preview {
+            height: 200px;
+            width: 200px;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
