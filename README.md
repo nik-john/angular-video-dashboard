@@ -1,4 +1,4 @@
-## AngularJS/Browserify/Bootstrap/ExpressJS/MongoDB Video Dashboard
+## AngularJS/Browserify/Bootstrap/ExpressJS/MongoDB/Cloudinary Video Dashboard
 
 ### Getting up and running
 
